@@ -1,0 +1,19 @@
+version: smartide/v0.2
+orchestrator:
+  type: k8s
+  version: 3
+workspace:
+  dev-container:
+    service-name: boathouse-pipeline-vmlc
+    ports: 
+      tools-webide-vscode: 6800
+      tools-ssh: 6822
+      tools-jenkins: 8080
+    ide-type: vscode
+    volumes: 
+      git-config: true
+      ssh-key: true
+    command:
+      - ll
+
+  kube-deploy-files: "k8s-vmlc-deployment.yaml"
