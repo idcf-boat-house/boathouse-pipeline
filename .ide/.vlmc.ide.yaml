@@ -16,7 +16,7 @@ workspace:
       ssh-key: true
   services:
     boathouse-pipeline-vmlc:
-      image:  registry.cn-hangzhou.aliyuncs.com/smartide/smartide-base-v2-vscode-vmlc
+      image:  registry.cn-hangzhou.aliyuncs.com/smartide/smartide-base-v2-vscode-vmlc:latest
       runtime: sysbox-runc
       hostname: boathouse-pipeline-vmlc
       restart: always
