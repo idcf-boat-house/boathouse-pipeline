@@ -4,7 +4,7 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-template-java-vscode
+    service-name: boathouse-pipeline
     ports:
       tools-webide-vscode: 6800
       tools-ssh: 6822
@@ -17,7 +17,7 @@ workspace:
     command:
       - ll
   services:
-    smartide-template-java-vscode:
+    boathouse-pipeline:
       image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-vscode:latest
       restart: always
       environment:

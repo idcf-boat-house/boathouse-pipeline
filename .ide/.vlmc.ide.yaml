@@ -1,0 +1,35 @@
+version: smartide/v0.3
+orchestrator:
+  type: docker-compose
+  version: 3
+workspace:
+  dev-container:
+    service-name: boathouse-pipeline-vmlc
+    ports:
+      tools-ssh: 6822
+      tools-webide-vscode: 6800
+      app-ingress: 8080
+      app-nodejs: 3001
+    ide-type: vscode
+    volumes: 
+      git-config: true
+      ssh-key: true
+  services:
+    boathouse-pipeline-vmlc:
+      image:  registry.cn-hangzhou.aliyuncs.com/smartide/smartide-base-v2-vscode-vmlc
+      runtime: sysbox-runc
+      hostname: boathouse-pipeline-vmlc
+      restart: always
+      volumes:
+        - .:/home/project
+      ports:
+        - 6822:22
+        - 6800:3000
+        - 8080:8080
+      volumes:
+        - .:/home/project
+      networks:
+        - smartide-network  
+  networks:
+    smartide-network:
+      external: true
