@@ -1,51 +1,19 @@
-version: smartide/v0.3
+version: smartide/v0.2
 orchestrator:
-  type: docker-compose
+  type: k8s
   version: 3
 workspace:
   dev-container:
-    service-name: boathouse-pipeline
-    ports:
+    service-name: boathouse-pipeline-vmlc
+    ports: 
       tools-webide-vscode: 6800
       tools-ssh: 6822
       tools-jenkins: 8080
-      apps-application: 3001
     ide-type: vscode
     volumes: 
       git-config: true
       ssh-key: true
     command:
       - ll
-  services:
-    boathouse-pipeline:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-vscode:latest
-      restart: always
-      environment:
-        ROOT_PASSWORD: root123
-        LOCAL_USER_PASSWORD: root123
-      ports:
-        - 6822:22
-        - 6800:3000
-        - 3001:3001
-      volumes:
-        - .:/home/project
-      networks:
-        - smartide-network
 
-    jenkins:
-      container_name: jenkins
-      image: registry.cn-hangzhou.aliyuncs.com/boathouse/jenkins:lts
-      user: root
-      restart: always
-      expose:
-        - 8080
-      ports:
-        - '8080:8080'
-        - '50000:50000'
-      volumes:
-        - './.ide/.temp/jenkins_home:/var/jenkins_home'
-      networks:
-         - smartide-network
-  networks:
-    smartide-network:
-      external: true    
+  kube-deploy-files: "k8s-vmlc-deployment.yaml"
