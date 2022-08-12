@@ -31,6 +31,13 @@ spec:
     image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-vscode-vmlc:latest
     command: ["/sbin/init"]
     imagePullPolicy: Always
+    resources:
+      requests:
+        memory: "2Gi"
+        cpu: "500m"
+      limits:
+        memory: "2Gi"
+        cpu: "500m"
     ports:
       - containerPort: 22
       - containerPort: 3000
@@ -73,13 +80,16 @@ spec:
     image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-vscode-vmlc:latest
     command: ["/sbin/init"]
     imagePullPolicy: Always
+    resources:
+      requests:
+        memory: "6Gi"
+        cpu: "1000m"
+      limits:
+        memory: "6Gi"
+        cpu: "1000m"
     ports:
       - containerPort: 22
-      - containerPort: 3000
-      - containerPort: 8848
-      - containerPort: 8090
       - containerPort: 8000
-      - containerPort: 8848
 
 ---
 
@@ -92,15 +102,6 @@ spec:
     - name: "tools-ssh-6822"
       port: 6822
       targetPort: 22
-    - name: "tools-webide-vscode-6800"
-      port: 6800
-      targetPort: 3000
-    - name: "tools-nacos-8848"
-      port: 8848
-      targetPort: 8848
-    - name: "tools-phpmyadmin-8090"
-      port: 8090
-      targetPort: 8090
     - name: "apps-ruoyi-ui-8000"
       port: 8000
       targetPort: 8000
