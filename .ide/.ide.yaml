@@ -9,6 +9,10 @@ workspace:
       tools-webide-vscode: 6800
       tools-ssh: 6822
       tools-jenkins: 8080
+      tools-nacos: 8848
+      tools-phpmyadmin: 8090
+      app-ruoyi-ui: 8000
+
     ide-type: vscode
     volumes: 
       git-config: true
