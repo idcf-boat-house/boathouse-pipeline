@@ -1,5 +1,21 @@
 ---
 
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: boathouse-pipeline-vmlc-network
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              smartide.service/smartide-network: "true"
+  podSelector:
+    matchLabels:
+      smartide.service/smartide-network: "true"
+
+---
+
 apiVersion: v1
 kind: Pod
 metadata:
@@ -39,22 +55,6 @@ spec:
       targetPort: 8080
   selector:
     smartide.service: boathouse-pipeline-vmlc
-
----
-
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: boathouse-pipeline-vmlc-network
-spec:
-  ingress:
-    - from:
-        - podSelector:
-            matchLabels:
-              smartide.service/smartide-network: "true"
-  podSelector:
-    matchLabels:
-      smartide.service/smartide-network: "true"
 
 ---
 
