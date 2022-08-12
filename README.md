@@ -44,6 +44,7 @@ docker build -t registry.cn-hangzhou.aliyuncs.com/boathouse/ruoyi-gateway:latest
 cd ../modules/system
 docker build -t registry.cn-hangzhou.aliyuncs.com/boathouse/ruoyi-modules-system:latest .
 cd ../../../
+docker compose -f docker-compose-test-pipeline.yml down
 docker compose -f docker-compose-test-pipeline.yml up -d
 cd ../k8s/prod
 kind load docker-image registry.cn-hangzhou.aliyuncs.com/boathouse/ruoyi-mysql:latest
