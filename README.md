@@ -23,6 +23,7 @@ java --version
 mvn --version
 mvn package
 cd ruoyi-ui 
+npm config set registry https://registry.npmmirror.com
 npm install
 npm run build:prod
 cd ../docker
