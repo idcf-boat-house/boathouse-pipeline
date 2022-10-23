@@ -1,10 +1,10 @@
 version: smartide/v0.2
 orchestrator:
-  type: k8s
+  type: allinone
   version: 3
 workspace:
   dev-container:
-    service-name: boathouse-pipeline-vmlc
+    service-name: boathouse-pipeline-master
     ports: 
       tools-webide-vscode: 6800
       tools-ssh: 6822
@@ -18,4 +18,5 @@ workspace:
     command:
       - code --install-extension ms-azuretools.vscode-docker
 
-  kube-deploy-files: "k8s-vmlc-deployment.yaml"
+  kube-deploy-files: "vscode-vmlc-k8s-deployment.yaml" 
+  docker-compose-file: "vscode-vmlc-docker-compose.yaml"

@@ -19,24 +19,24 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: boathouse-pipeline-vmlc
+  name: boathouse-pipeline-master
   annotations:
     io.kubernetes.cri-o.userns-mode: "auto:size=65536"
   labels:
-    smartide.service: boathouse-pipeline-vmlc
+    smartide.service: boathouse-pipeline-master
 spec:
   runtimeClassName: sysbox-runc
   containers:
-  - name: boathouse-pipeline-vmlc
+  - name: boathouse-pipeline-master
     image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-vscode-vmlc:latest
     command: ["/sbin/init"]
     imagePullPolicy: Always
     resources:
       requests:
-        memory: "6Gi"
+        memory: "8Gi"
         cpu: "2000m"
       limits:
-        memory: "6Gi"
+        memory: "8Gi"
         cpu: "2000m"
     ports:
       - containerPort: 22
@@ -48,7 +48,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: boathouse-pipeline-vmlc
+  name: boathouse-pipeline-master
 spec:
   ports:
     - name: "tools-ssh-6822"
@@ -61,7 +61,7 @@ spec:
       port: 8080
       targetPort: 8080
   selector:
-    smartide.service: boathouse-pipeline-vmlc
+    smartide.service: boathouse-pipeline-master
 
 ---
 
@@ -77,16 +77,16 @@ spec:
   runtimeClassName: sysbox-runc
   containers:
   - name: boathouse-pipeline-agent
-    image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-vscode-vmlc:latest
+    image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-vmlc:latest
     command: ["/sbin/init"]
     imagePullPolicy: Always
     resources:
       requests:
-        memory: "6Gi"
-        cpu: "1000m"
+        memory: "8Gi"
+        cpu: "2000m"
       limits:
-        memory: "6Gi"
-        cpu: "1000m"
+        memory: "8Gi"
+        cpu: "2000m"
     ports:
       - containerPort: 22
       - containerPort: 8000
