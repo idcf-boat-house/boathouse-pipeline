@@ -33,11 +33,11 @@ spec:
     imagePullPolicy: Always
     resources:
       requests:
-        memory: "8Gi"
-        cpu: "2000m"
+        memory: "4Gi"
+        cpu: "1000m"
       limits:
-        memory: "8Gi"
-        cpu: "2000m"
+        memory: "4Gi"
+        cpu: "1000m"
     ports:
       - containerPort: 22
       - containerPort: 3000
@@ -82,11 +82,11 @@ spec:
     imagePullPolicy: Always
     resources:
       requests:
-        memory: "8Gi"
-        cpu: "2000m"
+        memory: "4Gi"
+        cpu: "1000m"
       limits:
-        memory: "8Gi"
-        cpu: "2000m"
+        memory: "4Gi"
+        cpu: "1000m"
     ports:
       - containerPort: 22
       - containerPort: 8000
